@@ -1,7 +1,7 @@
 #!/bin/bash
 # 
 #
-# If there were no arguments provided, exit.
+# If there were no arguments provided, exit.  You really don't want to wait for nslookup to timeout over nothing, do you?
 #
 if [ -z $1  ]; then
 	exit 1
