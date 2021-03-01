@@ -1,0 +1,12 @@
+# copy this file to $HOME/.ssh/config
+
+Host Jump
+# change "your_username" to the SSH username
+    User "your_username"    
+# change "your_hostname" to the hostname of the SSH jump host (e.g., bos-devops1)
+    Hostname "your_hostname"  
+
+# change "/path/to/the/script/" to the path to the script, or put the script in your path
+Match exec "/path/to/the/script/jumphost_required.sh %h"
+    Port 22
+    ProxyCommand ssh -q -W %h:%p Jump

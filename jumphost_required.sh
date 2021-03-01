@@ -19,7 +19,9 @@
 	fi
 #
 #
-#echo -e "\aThanks!\n\tYou entered:  $text.\n"
-nslookup $hostname
+result=`nslookup $hostname | tail -2 | cut -d ' ' -f 2 | cut -d '.' -f 1`
 
-dig $hostname
+if [ $result == 10 ]
+then
+		exit 1
+fi
