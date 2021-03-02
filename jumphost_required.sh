@@ -11,6 +11,6 @@ if [ -z $1  ]; then
 	exit 1
 # do a lookup on the input and if the IP address starts with a 10, then fail; otherwise, exit successfully, and let SSH use the jumphost 
 #
-elif [[ `nslookup $1 | tail -2 | cut -d ' ' -f 2 | cut -d '.' -f 1` == 10 ]]; then
+elif [[ `nslookup $1 | tail -2 | head -1 | cut -d ' ' -f 2 | cut -d '.' -f 1` == 10 ]]; then
 	exit 1
 fi
