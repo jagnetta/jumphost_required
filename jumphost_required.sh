@@ -7,10 +7,21 @@
 # if the value turns out to not be a 10, then this script exits successfully, and ssh invokes the jump condiion. 
 #
 # If there were no arguments provided, exit.  You really don't want to wait for nslookup to timeout over nothing, do you?
-if [ -z $1  ]; then
+
+if [ -z $1 ]; then 
+	echo "No input given."
 	exit 1
-# do a lookup on the input and if the IP address starts with a 10, then fail; otherwise, exit successfully, and let SSH use the jumphost 
-#
-elif [[ `nslookup $1 | tail -2 | head -1 | cut -d ' ' -f 2 | cut -d '.' -f 1` == 10 ]]; then
-	exit 1
+else
+	hostTest=`nslookup $1 | tail -2 | head -1 | cut -d ' ' -f 2 | cut -d '.' -f 1`
+	echo "hostTest is now:  $hostTest"
+	if [[ "$hostTest" =~ [a-zA-Z] ]] ; then
+		echo "$hostTest is not a number!"
+		exit 1
+	elif [[ "$hostTest" -eq "10" ]] ; then
+		echo "$hostTest is a 10, take the express!" 
+		exit 1
+	else
+		echo "$hostTest is not a 10, you need a jump!"
+		exit 0
+	fi
 fi
