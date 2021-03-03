@@ -9,7 +9,7 @@
 # If there were no arguments provided, exit.  You really don't want to wait for nslookup to timeout over nothing, do you?
 
 if [ -z $1 ]; then 
-	echo "No input given."
+	#echo "No input given."
 	exit 1
 
 # If they did provide an arguement, let's see if it was a 10 or something else, then exit.
