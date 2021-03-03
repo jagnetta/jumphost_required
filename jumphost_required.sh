@@ -22,20 +22,20 @@ else
 # we usually see "server" or "Can't" so this should quit if we didn't get the first octet of the ip address
 
 	if [[ "$hostTest" =~ [a-zA-Z] ]] ; then
-		echo "$hostTest is not a number!"
+		#echo "$hostTest is not a number!"
 		exit 1
 
 # next test to see if "hostTest" is a 10, which means we don't need to use the jumphost and can go directly
 
 	elif [[ "$hostTest" -eq "10" ]] ; then
-		echo "$hostTest is a 10, take the express!" 
+		#echo "$hostTest is a 10, take the express!" 
 		exit 1
 
 # the result should be a number, maybe we can put some more logic here,
 # but should be fine to exit and use the jump
 
 	else
-		echo "$hostTest is not a 10, you need a jump!"
+		#echo "$hostTest is not a 10, you need a jump!"
 		exit 0
 	fi
 fi
