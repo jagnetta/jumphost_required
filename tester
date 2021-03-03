@@ -1,0 +1,11 @@
+#!/bin/bash
+if [[ -z $1 ]] ; then
+	echo "Enter a hostname to see if it needs a jumphost.  $0 <hostname>"
+	exit 1
+fi
+./jumphost_required.sh $1
+if [[ $? == 0 ]] ; then 
+	echo "Needs a jump." 
+else
+	echo "No jump needed." 
+fi
